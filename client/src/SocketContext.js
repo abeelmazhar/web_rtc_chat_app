@@ -21,7 +21,7 @@ const ContextProvider = ({children}) => {
 
 
     useEffect(() => {
-        navigator.mediaDevices.getUserMedia({video: true, audio: true})
+        navigator.mediaDevices.getUserMedia({video: true})
         .then((currentStream) => {
             setStream(currentStream)
 
@@ -34,6 +34,7 @@ const ContextProvider = ({children}) => {
         socket.on('callUser', ({from, name: callerName, signal}) => {
             setCall({
                 isReceivingCall: true,
+                
                 from,
                 name: callerName,
                 signal
