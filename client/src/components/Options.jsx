@@ -1,7 +1,9 @@
 import React, { useContext, useState } from 'react'
 import { SocketContext } from '../SocketContext'
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 function Options  ({children}) {
   const {me, call, callAccepted, name, setName, leaveCall, answerCall, callEnded, stream, callUser} = useContext(SocketContext)
+ console.log(me)
   const [idToCall, setIdToCall] = useState('')
   const [callerName, setCallerName] = useState('')
     return (
@@ -19,11 +21,16 @@ onChange={(e) => setCallerName(e.target.value)}
 placeholder='Name'
 style={{width: '50%',height:"30px",marginBottom:"10px"}}
 />
+
+<CopyToClipboard text={me}>
 <button
   style={{width: '30%',height:"40px",backgroundColor:"blue",color:"white",borderRadius:"10px",border:"none"}}
+  onClick={() => alert('Your ID is copied')}
 >
   Copy Your Id
 </button>
+</CopyToClipboard>
+
 
 </div>
 
@@ -57,9 +64,11 @@ style={{width: '50%',height:"30px",marginBottom:"10px"}}
 
 </div>
 
+
+
         </div>
         
-        {children}
+        {children} 
     </div>
   )
 }

@@ -14,7 +14,7 @@ const ContextProvider = ({children}) => {
     const [callEnded, setCallEnded] = useState(false)
     const [name, setName] = useState('')
 
-
+console.log(me)
     const myVideo = useRef()
     const userVideo = useRef()
     const connectionRef = useRef()
@@ -30,11 +30,11 @@ const ContextProvider = ({children}) => {
 
         socket.on('me', (id) => {
             setMe(id)
+            
         })
         socket.on('callUser', ({from, name: callerName, signal}) => {
             setCall({
                 isReceivingCall: true,
-                
                 from,
                 name: callerName,
                 signal
